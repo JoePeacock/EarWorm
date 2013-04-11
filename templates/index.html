@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>EarWorm - Post the song that's stuck in your head & share with your friends.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet">
+    <link href="../static/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../static/css/styles.css" rel="stylesheet">
+    <link href="../static/css/docs.css" rel="stylesheet">
+    <link href="../static/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+
+  </head>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="./index.html">EarWorm</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li class="">
+                <a href="/profile">Profile</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-box">
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <p>Post the url of the song that's stuck in your head!</p>
+          <form method="POST">
+          <textarea rows="5" name="youtube-url"></textarea><bR>
+          <input type="submit" value="Post">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="thefeed">
+      <div class="container">
+      {% for posts in results %}
+      <div class="row">
+        <div class="span4">
+          {{ posts.username }}
+        </div>
+        <div class="span8">
+          <a href="{{ posts.url }}"> {{ posts.song }}</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/bootstrap-transition.js"></script>
+    <script src="../static/js/bootstrap-alert.js"></script>
+    <script src="../static/js/bootstrap-modal.js"></script>
+    <script src="../static/js/bootstrap-dropdown.js"></script>
+    <script src="../static/js/bootstrap-scrollspy.js"></script>
+    <script src="../static/js/bootstrap-tab.js"></script>
+    <script src="../static/js/bootstrap-tooltip.js"></script>
+    <script src="../static/js/bootstrap-popover.js"></script>
+    <script src="../static/js/bootstrap-button.js"></script>
+    <script src="../static/js/bootstrap-collapse.js"></script>
+    <script src="../static/js/bootstrap-carousel.js"></script>
+    <script src="../static/js/bootstrap-typeahead.js"></script>
+    <script src="../static/js/bootstrap-affix.js"></script>
+
+    <script src="../static/js/holder/holder.js"></script>
+    <script src="../static/js/google-code-prettify/prettify.js"></script>
+
+    <script src="../static/js/application.js"></script>
+
+
+
+  </body>
+</html>
