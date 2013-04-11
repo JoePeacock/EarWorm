@@ -4,6 +4,7 @@ import random
 import datetime
 import simplejson
 import urllib
+import db
 from tornado.database import Connection
 from flask import Flask, request, g
 
@@ -24,13 +25,17 @@ def close_db(response):
 
 @app.route("/", methods=['POST', 'GET'])
 def hello():
+	results = []
 	if flask.request.method == 'POST':
 		name = flask.request.form['username']
 		url =  flask.request.form['youtube-url']
 		now = str(datetime.datetime.now())
 		title = Youtube(url)
-		addevent = g.db.execute('INSERT INTO posts (name, song, url, date) values (%s, %s, %s, %s)', name, title, url, now)
-		results = g.db.query('SELECT * FROM posts');
+		post = db.Posts(name, title, url, now)
+		db.session.add(post)
+		db.session.commit()
+		# addevent = g.db.execute('INSERT INTO posts (name, song, url, date) values (%s, %s, %s, %s)', name, title, url, now)
+		# results = g.db.query('SELECT * FROM posts');
 	return flask.render_template("index.html", results=results)
 
 def Youtube(url):
