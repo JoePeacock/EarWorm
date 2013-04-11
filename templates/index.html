@@ -66,10 +66,12 @@
 
   <div class="thefeed">
       <div class="container">
+      <h3>Song's stuck in your head as of right now</h3>
       {% for posts in results %}
       <div class="row">
         <div class="span4">
-          {{ posts.name }}
+          {{ posts.name }}<Br>
+          <p>Posted at {{posts.date }}</p>
         </div>
         <div class="span8">
           <a href="{{ posts.url }}"> {{ posts.song }}</a>
