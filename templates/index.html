@@ -54,9 +54,10 @@
       <div class="row">
         <div class="span12">
           <p>Post the url of the song that's stuck in your head!</p>
-          <form method="POST">
-          <textarea rows="5" name="youtube-url"></textarea><bR>
-          <input type="submit" value="Post">
+          <form method="post">
+            <input type="text" placeholder="Your Name" name="username">
+            <textarea rows="3" name="youtube-url" placeholder="Paste the link of the YouTube URL here.."></textarea><bR>
+            <input type="submit" value="Post" name="submit">
           </form>
         </div>
       </div>
@@ -68,7 +69,7 @@
       {% for posts in results %}
       <div class="row">
         <div class="span4">
-          {{ posts.username }}
+          {{ posts.name }}
         </div>
         <div class="span8">
           <a href="{{ posts.url }}"> {{ posts.song }}</a>
