@@ -72,10 +72,10 @@ def compareDate(input, current):
 		return str(input.day) + " " + str(month[input.month])
 
 
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 80))
-    app.run(host='208.68.37.33', port=port, debug=True)
-
 # if __name__ == '__main__':
-#     port = int(os.environ.get('PORT', 1337))
-#     app.run(host='127.0.0.1', port=port, debug=True)
+#     port = int(os.environ.get('PORT', 80))
+#     app.run(host='208.68.37.33', port=port, debug=True)
+
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 1337))
+    app.run(host='127.0.0.1', port=port, debug=True)
