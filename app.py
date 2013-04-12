@@ -6,6 +6,8 @@ import simplejson
 import urllib
 import db
 import time
+import gdata.youtube
+import gdata.youtube.service
 from time import mktime
 from sqlalchemy import desc
 from flask import Flask, request, g
@@ -41,6 +43,12 @@ def hello():
 			error = "Please input a YouTube url."
 	return flask.render_template("index.html", results=results, error=error, Posts=postsHere)
 
+@app.route("/test", methods=['POST', 'GET'])
+def testsearch():
+	SearchAndPrint("Daft Punk")
+	return "Hello World"
+
+
 def Youtube(url):
 	split = url.split('/')
 	watch = split[3].split('=')
@@ -70,6 +78,15 @@ def compareDate(input, current):
 			return str(current.minute - input.minute) + " minutes ago"
 	else:
 		return str(input.day) + " " + str(month[input.month])
+
+def SearchAndPrint(search_terms):
+  yt_service = gdata.youtube.service.YouTubeService()
+  query = gdata.youtube.service.YouTubeVideoQuery()
+  query.vq = search_terms
+  query.orderby = 'viewCount'
+  query.racy = 'include'
+  feed = yt_service.YouTubeQuery(query)
+  PrintVideoFeed(feed)
 
 
 # if __name__ == '__main__':
