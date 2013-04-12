@@ -53,8 +53,11 @@
     <div class="container">
       <div class="row">
         <div class="span12">
+          {% if error %}
+          <h4 style="color:red">Error! {{ error }}</h4>
+          {% endif %}
           <p>Post the url of the song that's stuck in your head!</p>
-          <form method="post">
+          <form method="post" action="/">
             <input type="text" placeholder="Your Name" name="username">
             <textarea rows="3" name="youtube-url" placeholder="Paste the link of the YouTube URL here.."></textarea><bR>
             <input type="submit" value="Post" name="submit">
@@ -66,18 +69,23 @@
 
   <div class="thefeed">
       <div class="container">
-      <h3>Song's stuck in your head as of right now</h3>
+      <h3>Song's stuck in your friends heads.</h3>
+      <br>
+      {% if Posts %}
       {% for posts in results %}
       <div class="row">
         <div class="span4">
           {{ posts.name }}<Br>
-          <p>Posted at {{posts.date }}</p>
+          <p>{{posts.date }}</p>
         </div>
         <div class="span8">
-          <a href="{{ posts.url }}"> {{ posts.song }}</a>
+          <a href="{{ posts.url }}" target="_blank"> {{ posts.song }}</a>
         </div>
       </div>
       {% endfor %}
+      {% else %}
+      <p>No results</p>
+      {% endif %}
     </div>
   </div>
 

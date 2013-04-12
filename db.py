@@ -3,12 +3,12 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 
-engine = create_engine('sqlite:///:memory:', echo=True)
-Base = declarative_base()
+engine = create_engine('sqlite:///sqlite.db', echo=True)
+
 Session = sessionmaker(bind=engine)
-Session.configure(bind=engine)  # once engine is available
-Base.metadata.create_all(engine) 
 session = Session()
+
+Base = declarative_base()
 
 engine.execute("select 1").scalar()
 
@@ -27,4 +27,6 @@ class Posts(Base):
 		self.date = date
 
 	def __repr__(self):
-		return "<User('%s','%s', '%s')>" % (self.name, self.fullname, self.password)
+		return "<User('%s','%s', '%s', '%s', '%s')>" % (self.name, self.song, self.url, self.date)
+
+Base.metadata.create_all(engine)
