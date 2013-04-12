@@ -36,6 +36,7 @@ def hello():
 			post = db.Posts(name, title, url, now)
 			db.session.add(post)
 			db.session.commit()
+			results.append({"name": name, "song": title, "url": url, "date": compareDate(now, now)})
 		else:
 			error = "Please input a YouTube url."
 	return flask.render_template("index.html", results=results, error=error, Posts=postsHere)
