@@ -36,7 +36,7 @@ def hello():
 			post = db.Posts(name, title, url, now)
 			db.session.add(post)
 			db.session.commit()
-			results.append({"name": name, "song": title, "url": url, "date": compareDate(now, now)})
+			results.insert(0, {"name": name, "song": title, "url": url, "date": compareDate(now, now)})
 		else:
 			error = "Please input a YouTube url."
 	return flask.render_template("index.html", results=results, error=error, Posts=postsHere)
@@ -73,5 +73,9 @@ def compareDate(input, current):
 
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 1337))
-    app.run(host='127.0.0.1', port=port, debug=True)
+    port = int(os.environ.get('PORT', 80))
+    app.run(host='208.68.37.33', port=port, debug=True)
+
+# if __name__ == '__main__':
+#     port = int(os.environ.get('PORT', 1337))
+#     app.run(host='127.0.0.1', port=port, debug=True)
