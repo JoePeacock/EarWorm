@@ -6,8 +6,7 @@ import simplejson
 import urllib
 import db
 import time
-import gdata.youtube
-import gdata.youtube.service
+import ytservice
 from time import mktime
 from sqlalchemy import desc
 from flask import Flask, request, g
@@ -15,6 +14,7 @@ from flask import Flask, request, g
 app = Flask(__name__)
 app.debug = True
 app.config['TRAP_BAD_REQUEST_ERRORS'] = True
+yt = ytservice.YoutubeAPI()
 
 @app.route("/earworm", methods=['POST', 'GET'])
 def hello():
@@ -45,9 +45,11 @@ def hello():
 
 @app.route("/test", methods=['POST', 'GET'])
 def testsearch():
-	SearchAndPrint("Daft Punk")
-	return "Hello World"
-
+	search = []
+	results = yt.search("Daft Punk")
+	for item in results.entry:
+		search.append(unicode(item.media.title.text,'utf-8','ignore'))
+	return flask.render_template('test.html', search=search)
 
 def Youtube(url):
 	split = url.split('/')
@@ -78,15 +80,6 @@ def compareDate(input, current):
 			return str(current.minute - input.minute) + " minutes ago"
 	else:
 		return str(input.day) + " " + str(month[input.month])
-
-def SearchAndPrint(search_terms):
-  yt_service = gdata.youtube.service.YouTubeService()
-  query = gdata.youtube.service.YouTubeVideoQuery()
-  query.vq = search_terms
-  query.orderby = 'viewCount'
-  query.racy = 'include'
-  feed = yt_service.YouTubeQuery(query)
-  PrintVideoFeed(feed)
 
 
 # if __name__ == '__main__':
