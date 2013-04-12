@@ -10,8 +10,6 @@ session = Session()
 
 Base = declarative_base()
 
-engine.execute("select 1").scalar()
-
 class Posts(Base):
 	__tablename__ = 'posts'
 	id = Column(Integer, primary_key=True)
