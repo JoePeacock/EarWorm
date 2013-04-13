@@ -9,3 +9,27 @@
 .post-box textarea {
 	width: 80%;
 }
+
+.search .input-append {
+	width: 100%;
+}
+
+.search .input-append input {
+	width: 100%;
+}
+
+.search .input-append input,
+.search .input-append button {
+	padding: 15px;
+	font-size: 20px;
+}
+
+#results li {
+	list-style-type: none;
+	padding: 20px 0 20px 0;
+	border-bottom: 1px solid #ddd;
+}
+
+#results {
+	margin-left: 0;
+}

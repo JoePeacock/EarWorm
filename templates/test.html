@@ -7,12 +7,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Le styles -->
+    <!-- Le assets -->
+    <link rel="stylesheet"    
+    <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script src="../static/js/base.js"></script>
     <link href="../static/css/bootstrap.css" rel="stylesheet">
     <link href="../static/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="../static/css/styles.css" rel="stylesheet">
-    <link href="../static/css/docs.css" rel="stylesheet">
-    <link href="../static/js/google-code-prettify/prettify.css" rel="stylesheet">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -46,43 +49,39 @@
       </div>
     </div>
 
-<div class="container" style="margin-top:100px;">
-  {% for item in search %}
-  <p>{{ item }}</p>
-  {% endfor %}
-<div class="row" style="margin-top:50px;">
-  <div class="span12">
-    <p class="pull-right">A creation by <a href="http://www.japeacock.com" target="_blank">Joe Peacock</a></p>
+<div class="container" style="margin-top:100px;"  ng-app>
+  <div class="row">
+    <div class="search">
+    <form method="post" action="/">
+       <div class="input-append">
+        <div class="span10">
+          <input class="span2" id="appendedInputButton" ng-model="test" name="search" type="text">
+        </div>
+        <div class="span2">
+          <button class="btn" type="button">Search for Song</button>
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+  <h4>Search: <span ng:bind="test"></span></h4>
+  <div class="search">
+    <ul id="results">
+
+    </ul>
+  </div>
+
+  <div class="row" style="margin-top:50px;">
+    <div class="span12">
+      <p class="pull-right">A creation by <a href="http://www.japeacock.com" target="_blank">Joe Peacock</a></p>
+    </div>
   </div>
 </div>
-</div>
-
 
 
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-    <script src="../static/js/jquery.js"></script>
-    <script src="../static/js/bootstrap-transition.js"></script>
-    <script src="../static/js/bootstrap-alert.js"></script>
-    <script src="../static/js/bootstrap-modal.js"></script>
-    <script src="../static/js/bootstrap-dropdown.js"></script>
-    <script src="../static/js/bootstrap-scrollspy.js"></script>
-    <script src="../static/js/bootstrap-tab.js"></script>
-    <script src="../static/js/bootstrap-tooltip.js"></script>
-    <script src="../static/js/bootstrap-popover.js"></script>
-    <script src="../static/js/bootstrap-button.js"></script>
-    <script src="../static/js/bootstrap-collapse.js"></script>
-    <script src="../static/js/bootstrap-carousel.js"></script>
-    <script src="../static/js/bootstrap-typeahead.js"></script>
-    <script src="../static/js/bootstrap-affix.js"></script>
-
-    <script src="../static/js/holder/holder.js"></script>
-    <script src="../static/js/google-code-prettify/prettify.js"></script>
-
-    <script src="../static/js/application.js"></script>
-
 
 
   </body>

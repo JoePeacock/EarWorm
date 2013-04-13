@@ -6,6 +6,7 @@ import simplejson
 import urllib
 import db
 import time
+import json
 import ytservice
 from time import mktime
 from sqlalchemy import desc
@@ -45,11 +46,17 @@ def hello():
 
 @app.route("/test", methods=['POST', 'GET'])
 def testsearch():
-	search = []
-	results = yt.search("Daft Punk")
-	for item in results.entry:
-		search.append(unicode(item.media.title.text,'utf-8','ignore'))
-	return flask.render_template('test.html', search=search)
+	return flask.render_template('test.html')
+
+@app.route('/search/<query>', methods=['GET'])
+def hello(query):
+	res = []
+	search = request.args['q']
+	results = yt.search(search)
+	for item in results.entry[:8]:
+		res.append(unicode(item.media.title.text, 'utf-8', 'ignore'))
+	test = json.dumps(res)
+	return test
 
 def Youtube(url):
 	split = url.split('/')
