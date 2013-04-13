@@ -49,13 +49,14 @@ def testsearch():
 	return flask.render_template('test.html')
 
 @app.route('/search/<query>', methods=['GET'])
-def hello(query):
+def search(query):
 	res = []
 	search = request.args['q']
 	results = yt.search(search)
-	for item in results.entry[:8]:
-		res.append(unicode(item.media.title.text, 'utf-8', 'ignore'))
+	for item in results.entry:
+		res.append({'title': unicode(item.media.title.text, 'utf-8', 'ignore'), "url":item.media.player.url, 'img':item.media.thumbnail[0].url})
 	test = json.dumps(res)
+	print test
 	return test
 
 def Youtube(url):
@@ -89,10 +90,10 @@ def compareDate(input, current):
 		return str(input.day) + " " + str(month[input.month])
 
 
-# if __name__ == '__main__':
-#     port = int(os.environ.get('PORT', 80))
-#     app.run(host='208.68.37.33', port=port, debug=True)
-
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 1337))
-    app.run(host='127.0.0.1', port=port, debug=True)
+    port = int(os.environ.get('PORT', 80))
+    app.run(host='208.68.37.33', port=port, debug=True)
+
+# if __name__ == '__main__':
+#     port = int(os.environ.get('PORT', 1337))
+#     app.run(host='127.0.0.1', port=port, debug=True)

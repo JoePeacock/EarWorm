@@ -10,11 +10,10 @@ class YoutubeAPI():
 		yt_service = gdata.youtube.service.YouTubeService()
 		query = gdata.youtube.service.YouTubeVideoQuery()
 		query.vq = search_terms
-		query.orderby = 'viewCount'
+		query.orderby = 'relevance'
 		query.racy = 'include'
 		feed = yt_service.YouTubeQuery(query)
 		return feed
-		# return self.PrintVideoFeed(feed)
 
 	def PrintVideoFeed(self, feed):
 		for entry in feed.entry:
