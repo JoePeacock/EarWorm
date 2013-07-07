@@ -14,7 +14,7 @@ from flask import Flask, request, g
 
 app = Flask(__name__)
 app.debug = True
-app.config['TRAP_BAD_REQUEST_ERRORS'] = True
+app.config['TRAP_BAD_REQUEST_ERRORS'] = Truep
 yt = ytservice.YoutubeAPI()
 
 @app.route("/earworm", methods=['POST', 'GET'])
@@ -57,6 +57,8 @@ def search(query):
 		res.append({'title': unicode(item.media.title.text, 'utf-8', 'ignore'), "url":item.media.player.url, 'img':item.media.thumbnail[0].url})
 	test = json.dumps(res)
 	print test
+	for item in res:
+		print item
 	return test
 
 def Youtube(url):
